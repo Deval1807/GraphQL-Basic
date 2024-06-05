@@ -97,3 +97,41 @@ query RelatedQuery($reviewId: ID!) {
     }
   }
 }
+
+
+
+
+-------------------------------------------------------------------
+// Mutation
+
+// Delete Mutation
+
+mutation DeleteMutation($deleteGameId: ID!) {
+  deleteGame(id: $deleteGameId) {
+    id,
+    title,
+    platform
+  }
+}
+
+
+// Add Mutation:
+
+mutation AddGame($game: AddGameInput!) {
+  addGame(game: $game) {
+    id,
+    platform,
+    title
+  }
+}
+
+
+// update mutation:
+
+mutation updateGame($updateGameId: ID!, $edits: EditGameInput!) {
+  updateGame(id: $updateGameId, edits: $edits) {
+    id,
+    title,
+    platform
+  }
+}
