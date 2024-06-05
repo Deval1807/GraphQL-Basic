@@ -1,0 +1,48 @@
+// Simple query to get all the details
+
+query ExampleQuery {
+    games {
+      id,
+      title
+    },
+    authors {
+      id,
+      name
+    },
+    reviews {
+      content,
+      id,
+      rating
+    }
+  }
+
+
+-----------------------------------------------------------
+// Query to get a specific object
+
+query ReviewQuery($reviewId: ID!, $gameId: ID!, $authorId: ID!) {
+  review(id: $reviewId) {
+    content,
+    id,
+    rating
+  },
+  game(id: $gameId) {
+    id,
+    platform
+  },
+  author(id: $authorId) {
+    id,
+    name
+  }
+}
+
+// Variable:
+{
+  "reviewId": "2",
+  "gameId": "1",
+  "authorId": "3"
+}
+
+--------------------------------------------------------------
+
+// Query for related data
