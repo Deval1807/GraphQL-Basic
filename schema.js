@@ -6,18 +6,22 @@ export const typeDefs = `#graphql
         id: ID!       # ! represents required field
         title: String!
         platform: [String!]!
+        reviews: [Review!]
     }
 
     type Review {
         id: ID!
         rating: Int!
         content: String
+        game: Game!
+        author: Author!
     }
 
     type Author {
         id: ID!
         name: String!
         verified: Boolean!
+        reviews: [Review!]
     }
 
     # Define the entry type

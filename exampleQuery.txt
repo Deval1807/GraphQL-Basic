@@ -46,3 +46,54 @@ query ReviewQuery($reviewId: ID!, $gameId: ID!, $authorId: ID!) {
 --------------------------------------------------------------
 
 // Query for related data
+
+query RelatedQuery($gameId: ID!, $authorId: ID!, $reviewId: ID!) {
+  game(id: $gameId) {
+    title,
+    id,
+    reviews {
+      rating,
+      id,
+      content,
+    }
+  },
+  author(id: $authorId) {
+    name,
+    reviews {
+      rating,
+      id,
+      content
+    }
+  },
+  review(id: $reviewId) {
+    id,
+    rating,
+    game {
+      id,
+      platform
+    },
+    author {
+      id,
+      name
+    }
+  }
+}
+
+
+// we can also do multiple levels of nesting
+
+query RelatedQuery($reviewId: ID!) {
+  review(id: $reviewId) {
+    id,
+    rating,
+    game {
+      id,
+      platform,
+      reviews {
+        content,
+        rating,
+        id
+      }
+    }
+  }
+}

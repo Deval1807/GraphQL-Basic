@@ -28,4 +28,22 @@ export const resolvers = {
         return dummy.games.find((game) => game.id === args.id)
     }
   },
+  Game: {
+    reviews: (parent) => {
+        return dummy.reviews.filter((review) => review.game_id === parent.id)
+    }
+  },
+  Author: {
+    reviews: (parent) => {
+        return dummy.reviews.filter((review) => review.author_id === parent.id)
+    }
+  },
+  Review: {
+    author: (parent) => {
+        return dummy.authors.find((author) => author.id === parent.author_id)
+    },
+    game: (parent) => {
+        return dummy.games.find((game) => game.id === parent.game_id)
+    }
+  }
 };
